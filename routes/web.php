@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +14,22 @@
 */
 
 Route::get('/', function () {
-    return view('index', ['title' => 'Yeticave - интернет аукцион']);
+    $categories = DB::table('categories')->get();
+    $lots = DB::table('lots')->where('id', 1)->first();
+
+    var_dump($lots);
+
+    return view('index', ['title' => 'Yeticave - интернет аукцион', 'cats' => $categories]);
+});
+
+Route::get('/categories', function () {
+    $category = '1';
+
+    if(isset($_GET)) {
+        $category = $_GET['category_id'];
+    }
+
+    $cat = DB::table('categories')->where('id', intval($category))->first();
+
+    return view('categories', ['cat' => $cat]);
 });
