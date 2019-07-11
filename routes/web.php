@@ -14,22 +14,17 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    $categories = DB::table('categories')->get();
-    $lots = DB::table('lots')->where('id', 1)->first();
+   if(empty(DB::connection()->getDatabaseName())) {
+       $categories = DB::table('categories')->get();
+       $lots = DB::table('lots')->where('id', 1)->first();
 
-    var_dump($lots);
+       var_dump($lots);
 
-    return view('index', ['title' => 'Yeticave - интернет аукцион', 'cats' => $categories]);
+       return view('index', ['title' => 'Yeticave - интернет аукцион', 'cats' => $categories]);
+   } else {
+       print ('Подключение к базе данных отсутствует ');
+       print_r (DB::connection()->getDatabaseName());
+   };
 });
 
-Route::get('/categories', function () {
-    $category = '1';
-
-    if(isset($_GET)) {
-        $category = $_GET['category_id'];
-    }
-
-    $cat = DB::table('categories')->where('id', intval($category))->first();
-
-    return view('categories', ['cat' => $cat]);
-});
+Route::get('/categories/{id}', 'CategoriesController@show');

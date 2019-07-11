@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title><?=$title?></title>
-    <link href="css/normalize.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <!--<link href="css/normalize.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">-->
 </head>
 <body>
 <div class="page-wrapper">
@@ -36,7 +36,7 @@
             <ul class="promo__list">
                 <?php foreach ($cats as $key):?>
                 <li class="promo__item <?=$key->class?>">
-                    <a class="promo__link" href="/categories?category_id=<?=$key->id?>"><?=$key->name?></a>
+                    <a class="promo__link" href="categories/<?=$key->id?>"><?=$key->name?></a>
                 </li>
                 <?endforeach;?>
             </ul>
