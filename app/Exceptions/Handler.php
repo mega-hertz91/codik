@@ -6,7 +6,6 @@ use Exception;
 use http\Env\Response;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Support\Facades\DB;
 
 class Handler extends ExceptionHandler
 {
