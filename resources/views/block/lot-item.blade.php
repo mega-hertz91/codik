@@ -1,6 +1,6 @@
 <li class="lots__item lot">
     <div class="lot__image">
-        <img src="{{ $key->image }}" width="350" height="260" alt="{{ $key->name }}">
+        <img src="/{{ $key->image }}" width="350" height="260" alt="{{ $key->name }}">
     </div>
     <div class="lot__info">
         <span class="lot__category">{{ $key->cat_name }}</span>

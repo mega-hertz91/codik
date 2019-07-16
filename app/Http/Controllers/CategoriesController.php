@@ -9,16 +9,23 @@ use Illuminate\Http\Request;
 class CategoriesController extends Controller
 {
     public function getCategories($id) {
-        $category = '1';
+        $category = $id;
 
-        if(isset($id)) {
-            $category = $id;
-        }
-
+        $cats = DB::table('categories')->get();
         $cat = DB::table('categories')->where('id', intval($category))->first();
-        $lot_by_id = DB::table('lots')->where('category_id', intval($category))->get();
+        $lot_by_id = DB::table('lots')
+            ->select('lots.id', 'lots.name', 'lots.description', 'lots.start_price', 'lots.start_date', 'lots.image', 'categories.name AS cat_name')
+            ->leftJoin('categories', function ($join) {
+                $join->on('lots.category_id', '=', 'categories.id');
+            })
+            ->where('categories.id', '=', intval($id))
+            ->get();
 
-        return view('categories', ['cat' => $cat, 'lots' => $lot_by_id]);
+        return view('all-lot', [
+            'lots' => $lot_by_id,
+            'title' => $cat->name,
+            'cats' => $cats
+        ]);
     }
 
     public function getLotId($id)

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
-    <link href="css/normalize.min.css" rel="stylesheet">
-   <!--<link href="css/style.css" rel="stylesheet">-->
+    <link href="/css/normalize.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
 
@@ -22,12 +22,16 @@
         </nav>
         <div class="container">
             <section class="lots">
-                <h2>Все лоты</h2>
+                <h2>{{ $title }}</h2>
+                @if (count($lots) > 0)
                 <ul class="lots__list">
                     @foreach($lots as $key)
                         @include('block.lot-item')
                     @endforeach
                 </ul>
+                @else
+                    <b style="margin-bottom: 25px; display: block">Лотов категории "{{ $title }}" пока нет.</b>
+                @endif
             </section>
             <ul class="pagination-list">
                 <li class="pagination-item pagination-item-prev"><a>Назад</a></li>
