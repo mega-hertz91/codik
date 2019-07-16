@@ -23,7 +23,6 @@ class CategoriesController extends Controller
 
     public function getLotId($id)
     {
-        // TODO: Implement __invoke() method.
 
         $cats = DB::table('categories')->get();
         $lot_by_one = DB::table('lots')

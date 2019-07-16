@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>DC Ply Mens 2016/2017 Snowboard</title>
+    <title>{{ $status_code }}</title>
     <link href="../css/normalize.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <!--<link href="../css/style.css" rel="stylesheet">-->
 </head>
 <body>
 
@@ -21,7 +21,7 @@
             @endforeach
         </ul>
         <section class="lot-item container">
-            <h2>404 Страница не найдена</h2>
+            <h2>{{ $status_code }} Страница не найдена</h2>
             <p>Данной страницы не существует на сайте.</p>
         </section>
     </main>
