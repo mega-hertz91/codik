@@ -1,3 +1,4 @@
+<?php $date_result = new \App\Helper\UserFunction() ?>
 <li class="lots__item lot">
     <div class="lot__image">
         <img src="/{{ $key->image }}" width="350" height="260" alt="{{ $key->name }}">
@@ -11,9 +12,21 @@
                 <span class="lot__amount">Стартовая цена</span>
                 <span class="lot__cost">{{ $key->start_price }}<b class="rub">р</b></span>
             </div>
-            <div class="lot__timer timer">
-                {{ $key->start_date }}
+            @if ($date_result->get_date_finish($key->finish_date) == 0)
+            <div class="lot__timer timer" style="background-color: crimson">
+                Лот закрыт
             </div>
+            @else
+                <?php if($date_result->get_date_finish($key->finish_date) > 24):?>
+                    <div class="lot__timer timer">
+                        <?=round(($date_result->get_date_finish($key->finish_date)/24))?> дня
+                    </div>
+                <?php else:?>
+                    <div class="lot__timer timer">
+                        <?=$date_result->get_date_finish($key->finish_date)?> часов
+                    </div>
+                <?php endif;?>
+            @endif
         </div>
     </div>
 </li>

@@ -14,7 +14,7 @@ class CategoriesController extends Controller
         $cats = DB::table('categories')->get();
         $cat = DB::table('categories')->where('id', intval($category))->first();
         $lot_by_id = DB::table('lots')
-            ->select('lots.id', 'lots.name', 'lots.description', 'lots.start_price', 'lots.start_date', 'lots.image', 'categories.name AS cat_name')
+            ->select('lots.id', 'lots.name', 'lots.description', 'lots.start_price', 'lots.finish_date', 'lots.image', 'categories.name AS cat_name')
             ->leftJoin('categories', function ($join) {
                 $join->on('lots.category_id', '=', 'categories.id');
             })
@@ -33,7 +33,7 @@ class CategoriesController extends Controller
 
         $cats = DB::table('categories')->get();
         $lot_by_one = DB::table('lots')
-            ->select('lots.id', 'lots.name', 'lots.description', 'lots.start_price', 'lots.start_date', 'lots.image', 'categories.name AS cat_name')
+            ->select('lots.id', 'lots.name', 'lots.description', 'lots.start_price', 'lots.finish_date', 'lots.image', 'categories.name AS cat_name')
             ->leftJoin('categories', function ($join) {
                 $join->on('lots.category_id', '=', 'categories.id');
             })
@@ -49,7 +49,7 @@ class CategoriesController extends Controller
     public function getLotAll () {
         $categories = DB::table('categories')->get();
         $lots = DB::table('lots')
-            ->select('lots.id', 'lots.name', 'lots.start_price', 'lots.start_date', 'lots.image', 'categories.name AS cat_name')
+            ->select('lots.id', 'lots.name', 'lots.start_price', 'lots.finish_date', 'lots.image', 'categories.name AS cat_name')
             ->leftJoin('categories', function ($join) {
                 $join->on('lots.category_id', '=', 'categories.id');
             })

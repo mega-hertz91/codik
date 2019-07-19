@@ -9,7 +9,6 @@
 <body>
 <div class="page-wrapper">
    @include('block.header')
-
     <main class="container">
         <section class="promo">
             <h2 class="promo__title">Нужен стафф для катки?</h2>
@@ -24,7 +23,13 @@
         </section>
         <section class="lots">
             <div class="lots__header">
-                <h2>Открытые лоты</h2>
+                @if (count($lots) > 0)
+                    <h2>Открытые лоты</h2>
+                @else
+                    <h2>Открытых лотов пока нет <br>
+                    {{ count($lots) }}
+                    </h2>
+                @endif
             </div>
             <ul class="lots__list">
                 @foreach($lots as $key)
