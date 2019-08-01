@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Response;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +11,5 @@ use Illuminate\Http\Response;
 |
 */
 
-Route::get('/', 'IndexController@getContent');
-Route::get('/categories/{id}', 'CategoriesController@getCategories');
-Route::get('/lot/{id}', 'CategoriesController@getLotId');
-Route::get('/all', 'CategoriesController@getLotAll');
+Route::get('/', 'IndexController@renderContent');
+Route::get('/element/{id}', 'ElementController@renderElement');

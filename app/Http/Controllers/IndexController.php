@@ -1,38 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PROGRAM
- * Date: 16.07.2019
- * Time: 19:25
- */
+
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-use App\Facades\FunctionService;
+use Illuminate\Http\Request;
 
 
 class IndexController extends Controller
 {
-    public function getContent () {
-        $date_now = date('Y-m-d');
-        $limit_value = 6;
-        $categories = DB::table('categories')->get();
-        $lots = DB::table('lots')
-            ->select('lots.id', 'lots.name', 'lots.start_price', 'lots.finish_date', 'lots.image', 'categories.name AS cat_name')
-            ->leftJoin('categories', function ($join) {
-                $join->on('lots.category_id', '=', 'categories.id');
-            })
-            ->limit($limit_value)
-            ->where('lots.finish_date', '>=', $date_now)
-            ->get();
+    public function renderContent () {
+        $token = 'https://kodikapi.com/list?token=955bbb6ff3892fa7b9e5412c7b5fc54a';
+        $limit = '10';
+        $materials = 'true';
+        $types = 'foreign-movie';
+        $content = file_get_contents( $token . '&limit=' . $limit . '&with_material_data='. $materials . '&types=' . $types);
+        $content = json_decode($content, true);
 
-        return view('index',
-            [
-                'title' => 'Yeticave - интернет аукцион', 'cats' => $categories,
-                'lots' => $lots,
-                'date_lot' => $date_now
-            ]
-        );
+        return view('index', [
+            'content' => $content['results'],
+            'next_page' => $content['next_page'],
+            'prev_page' => $content['prev_page'],
+        ]);
     }
 }
