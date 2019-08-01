@@ -15,6 +15,6 @@ class ElementController extends Controller
         $content = file_get_contents($request);
         $content = json_decode($content, true);
 
-        print_r($content['results'][0]['title']);
+        print_r($content['results'][0]['kinopoisk_id']);
     }
 }
