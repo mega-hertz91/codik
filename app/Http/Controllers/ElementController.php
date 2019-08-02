@@ -13,8 +13,8 @@ class ElementController extends Controller
         $types = 'foreign-movie';
         $request = $url . '' . $token . '&id=' . $id . '&with_material_data=' . $materials;
         $content = file_get_contents($request);
-        $content = json_decode($content, true);
+        $content = json_decode($content);
 
-        print_r($content['results'][0]['kinopoisk_id']);
+        print_r($content->results);
     }
 }
