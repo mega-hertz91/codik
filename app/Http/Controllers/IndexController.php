@@ -3,16 +3,17 @@
 
 namespace App\Http\Controllers;
 
-
 class IndexController extends Controller
 {
 
     public function renderContent () {
+        //Set param response
+
         $url = 'https://kodikapi.com/list?';
         $token = 'token=955bbb6ff3892fa7b9e5412c7b5fc54a';
 
         $parametrs = [
-            'limit' => 20,
+            'limit' => 10,
             'materials' => 'true',
             'type' => 'foreign-movie'
         ];
@@ -22,15 +23,32 @@ class IndexController extends Controller
             '&with_material_data='. $parametrs['materials'] .
             '&types=' . $parametrs['type'];
 
-        //$content = file_get_contents( );
-        //$content = json_decode($content);
+        $content = [];
+
+        // get response
 
         $result = new DownloadKodik($send_url);
 
-        var_dump($result);
+        $result->setParams(CURLOPT_RETURNTRANSFER, true);
+        $result->setParams(CURLOPT_NOBODY, true);
+        $content = $result->getContent();
 
+        //decode json
 
-        /*return view('index', [
+        $content = json_decode($content, true);
+
+        //send content in template
+
+        switch ($result->getInfo(CURLINFO_HTTP_CODE)) {
+            case 200:
+                print ('success');
+                break;
+            case 404:
+                print('Error 404');
+                break;
+        }
+
+       /*return view('index', [
             'content' => $content['results'],
             'next_page' => $content['next_page'],
             'prev_page' => $content['prev_page'],
