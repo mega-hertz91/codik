@@ -3,20 +3,11 @@
 
 namespace App\Http\Controllers;
 
-class IndexController extends Controller
-{
 
-    public function renderContent () {
+class categoryController extends Controller
+{
+    public function renderCategory ($cat) {
         //Set param response
-        $categories = [
-            'foreign-movie' => 'Зарубежные фильмы',
-            'soviet-cartoon' => 'Советсие мультфильмы',
-            'foreign-cartoon' => '
-            Зарубежные Мультфильмы',
-            'russian-cartoon' => 'Руссикие мультфильмы',
-            'anime' => 'Аниме',
-            'russian-movie' => 'Русские фильмы'
-        ];
 
         $url = 'https://kodikapi.com/list?';
         $token = 'token=955bbb6ff3892fa7b9e5412c7b5fc54a';
@@ -24,10 +15,10 @@ class IndexController extends Controller
         $parametrs = [
             'limit' => 20,
             'materials' => 'true',
-            'type' => 'foreign-movie',
+            'type' => $cat,
             'sort' => 'year',
             'camrip' => 'false',
-            'kinopoisk_raring' => '6.5-8.2'
+            'kinopoisk_raring' => '7.5-8.2'
         ];
 
         $send_url = $url . $token .
@@ -37,6 +28,7 @@ class IndexController extends Controller
             '&sort=' . $parametrs['sort'] .
             '&camrip=' . $parametrs['camrip'] .
             '&kinopoisk_rating=' .  $parametrs['kinopoisk_raring'];
+
 
         // get response
 
@@ -52,9 +44,9 @@ class IndexController extends Controller
 
         $content = json_decode($content, true);
 
-        return view('index', [
+        return view('category', [
             'content' => $content['results'],
-            'categories' => $categories
+            'next_page' => $content['next_page']
         ]);
 
     }

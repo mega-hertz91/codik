@@ -13,7 +13,6 @@ const responseTimeout = 3000;
 
 const main = document.querySelector('main');
 const div = document.createElement('div');
-let url ='https://kodikapi.com/list?token=955bbb6ff3892fa7b9e5412c7b5fc54a&limit=10&with_material_data=true&types=foreign-movie';
 
 window.download = function (onLoad, url, method) {
   const functions = {
