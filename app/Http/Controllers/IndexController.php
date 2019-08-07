@@ -18,7 +18,7 @@ class IndexController extends Controller
             'russian-movie' => 'Русские фильмы'
         ];
 
-        $url = 'https://kodikapi.com/list?';
+        /*$url = 'https://kodikapi.com/list?';
         $token = 'token=955bbb6ff3892fa7b9e5412c7b5fc54a';
 
         $parametrs = [
@@ -50,11 +50,11 @@ class IndexController extends Controller
 
         //decode json
 
-        $content = json_decode($content, true);
+        $content = json_decode($content, true);*/
 
         return view('index', [
-            'content' => $content['results'],
-            'categories' => $categories
+            'categories' => $categories,
+            'user' => 1
         ]);
 
     }

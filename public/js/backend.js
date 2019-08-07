@@ -1,20 +1,8 @@
-const responses = {
-  success: '<p style="color: darkblue">Данные успешно загружены</p>',
-  error: '<p style="color: crimson">Произошла ошибка сервера, код ошибки</p>'
-};
-
-const serverStatuses = {
-  success: 200,
-  notFound: 400,
-  serverError: 500
-};
+'use strict';
 
 const responseTimeout = 3000;
 
-const main = document.querySelector('main');
-const div = document.createElement('div');
-
-window.download = function (onLoad, url, method) {
+const download = (onLoad, url, method) => {
   const functions = {
     loadStart: function () {
       startDate = new Date().getTime();
@@ -53,3 +41,5 @@ window.download = function (onLoad, url, method) {
   xhr.open(method, url);
   xhr.send();
 };
+
+export {download};
