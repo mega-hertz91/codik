@@ -27,4 +27,14 @@
 
         </ul>
     </section>
+    <section>
+        <div class="clearfix"> </div>
+        <ul class="film-list">
+
+        </ul>
+        <h2 class="recent">Новые сериалы</h2>
+        <ul class="main-carousel" id="flexiselDemo1">
+
+        </ul>
+    </section>
 @stop
