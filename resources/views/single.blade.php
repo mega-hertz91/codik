@@ -6,7 +6,13 @@
             <div class="col-md-9 movie_box">
                 <div class="grid images_3_of_2">
                     <div class="movie_image">
-                        <span class="movie_rating">{{ $data['imdb_rating'] }}</span>
+
+                        @if (isset($data['imdb_rating']))
+                            <span class="movie_rating">
+                                {{ $data['imdb_rating'] }}
+                            </span>
+                        @endif
+
                         @if (isset($elem['kinopoisk_id']))
                             <img src="https://st.kp.yandex.net/images/film_big/{{ $elem["kinopoisk_id"] }}.jpg" class="img-responsive" alt="{{ $elem['title'] }}"/>
                         @else

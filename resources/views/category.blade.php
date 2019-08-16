@@ -20,5 +20,5 @@
     <div aria-label="next_page" data-link="{{ $next_page }}"></div>
         <button class="add">Загрузить еще</button>
     <script src="/js/backend.js"></script>
-    <script src="/js/content.js"></script>
+    <script src="/js/render-content.js"></script>
 </main>
