@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
         $order = -1;
 
         foreach ($data as $key => $value) {
-            $order++;
-            print($order .  ': ');
             if (isset($value['material_data'])) {
+                $order++;
+                print($order .  ': ');
+
                 if (isset($value['material_data']['premiere_ru']) == false) {
                     $value['material_data']['premiere_ru'] = 2019-01-01;
                 }
