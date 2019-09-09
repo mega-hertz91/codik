@@ -30,7 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container_wrap">
         <div class="header_top">
             <div class="col-sm-3 logo">
-                <a href="index.html"><img src="images/logo.png" alt=""/></a>
+                <a href="">
+                    <img src="images/logo.png" alt=""/></a>
             </div>
             <div class="col-sm-6 nav">
                 <ul>

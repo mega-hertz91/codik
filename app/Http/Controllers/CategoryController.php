@@ -19,7 +19,7 @@ class categoryController extends Controller
             'sort' => 'year',
             'camrip' => 'false',
             'translation_id' => '794',
-            'kinopoisk_raring' => '5.5-10'
+            'kinopoisk_raring' => '5.5-9'
         ];
 
         $send_url = $url . $token .
@@ -28,8 +28,7 @@ class categoryController extends Controller
             '&types=' . $parametrs['type'] .
             '&sort=' . $parametrs['sort'] .
             '&camrip=' . $parametrs['camrip'] .
-            '&kinopoisk_rating=' .  $parametrs['kinopoisk_raring'] .
-            '&translation_id=' . $parametrs['translation_id']
+            '&kinopoisk_rating=' .  $parametrs['kinopoisk_raring']
         ;
 
 

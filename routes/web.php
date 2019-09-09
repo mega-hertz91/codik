@@ -15,4 +15,5 @@ Route::get('/', 'IndexController@renderContent');
 Route::get('/category/{id}', 'CategoryController@renderCategory');
 Route::get('/element/{id}', 'ElementController@renderElement');
 Route::get('/upload/films', 'Upload@uploadFilms');
+Route::get('/base', 'DownloadKodik@getData');
 

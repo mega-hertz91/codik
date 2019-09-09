@@ -10,7 +10,6 @@
 */
 
 (function ($) {
-
     $.fn.flexisel = function (options) {
 
         var defaults = $.extend({

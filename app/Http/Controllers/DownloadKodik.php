@@ -5,30 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 
 class DownloadKodik extends Controller {
+    public function getData() {
+        $data = file_get_contents('http://films/data/foreign-movie.json');
+        $data = json_decode($data, true);
+        $order = -1;
 
-    private $ch;
-
-    function __construct($url) {
-        $this->ch = curl_init($url);
-    }
-
-    public function getContent () {
-        return curl_exec($this->ch);
-    }
-
-    public function closeConnect () {
-        return curl_close($this->ch);
-    }
-
-    public function setParams ($param_name, $param_ceil) {
-        return curl_setopt($this->ch, $param_name, $param_ceil );
-    }
-
-    public function getInfo ($param) {
-        return curl_getinfo($this->ch, $param);
-    }
-
-    public function resetParam() {
-        return curl_reset($this->ch);
+        foreach ($data as $key => $value) {
+            $order++;
+            print($order .  ': ');
+            if (isset($value['material_data'])) {
+                print ('true <br>');
+            } else {
+                print ('false <br>');
+            }
+        }
     }
 }
