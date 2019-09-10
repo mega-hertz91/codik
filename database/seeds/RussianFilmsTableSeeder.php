@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class FilmsTableSeeder extends Seeder
+class RussianFilmsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,7 @@ class FilmsTableSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        $data = file_get_contents('public/data/foreign-movie.json');
+        $data = file_get_contents('public/data/russian-movie.json');
         $data = json_decode($data, true);
         $order = -1;
 
@@ -22,7 +21,7 @@ class FilmsTableSeeder extends Seeder
                 print($order .  ': ');
 
                 if (isset($value['material_data']['premiere_ru']) == false) {
-                    $value['material_data']['premiere_ru'] = 2019-01-01;
+                    $value['material_data']['premiere_ru'] = 0;
                 }
 
                 if (isset($value['material_data']['description']) == false) {
