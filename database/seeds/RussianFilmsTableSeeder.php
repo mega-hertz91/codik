@@ -29,7 +29,7 @@ class RussianFilmsTableSeeder extends Seeder
                 }
 
                 if (isset($value['material_data']['poster_url']) == false) {
-                    $value['material_data']['poster_url'] = '/images/poster/unknown';
+                    $value['material_data']['poster_url'] = '/images/poster/unknown.png';
                 }
 
                 if (isset($value['material_data']['duration']) == false) {

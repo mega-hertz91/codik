@@ -7,51 +7,32 @@
                 <div class="grid images_3_of_2">
                     <div class="movie_image">
 
-                        @if (isset($data['imdb_rating']))
+                        @if (isset($element->kinopoisk_rating))
                             <span class="movie_rating">
-                                {{ $data['imdb_rating'] }}
+                                {{ $element->kinopoisk_rating }}
                             </span>
                         @endif
-
-                        @if (isset($elem['kinopoisk_id']))
-                            <img src="https://st.kp.yandex.net/images/film_big/{{ $elem["kinopoisk_id"] }}.jpg" class="img-responsive" alt="{{ $elem['title'] }}"/>
-                        @else
-                            <img src="/images/single.jpg" class="img-responsive" alt=""/>
-                        @endif
+                            <img src="{{ $element->poster_url }}" class="img-responsive" alt="{{ $element->title }}"/>
                     </div>
                 </div>
                 <div class="desc1 span_3_of_2">
-                    <p class="movie_option"><strong>Название: </strong>{{ $elem['title'] }}</p>
+                    <p class="movie_option"><strong>Название: </strong>{{ $element->title }}</p>
                     <p class="movie_option"><strong>Страна: </strong>
-                    @foreach($data['countries'] as $value)
-                        {{ $value }}
-                    @endforeach
+                        {{ $element->countries }}
                     </p>
-                    <p class="movie_option"><strong>Год: </strong>{{ $data['year'] }}</p>
+                    <p class="movie_option"><strong>Год: </strong>{{ $element->year}}</p>
                     <p class="movie_option"><strong>Категория: </strong><a href="#">Adventure</a>, <a href="#">Fantazy</a></p>
                     <p class="movie_option"><strong>Дата релиза: </strong>December 12, 2014</p>
                     <p class="movie_option"><strong>Режиссер: </strong>
-                        @if(isset($data['directors']))
-                            @foreach($data['directors'] as $value)
-                                <a href="#"> {{ $value }}</a>
-                            @endforeach</p>
-                    @else
-                        ...
-                    @endif
+
                     <p class="movie_option"><strong>Актеры: </strong>
-                        @foreach($data['actors'] as $value)
-                            <a href="#"> {{ $value }}</a>,
-                        @endforeach
+                        {{ $element->actors }}
                     </p>
                 </div>
                 <div class="clearfix"> </div>
-                @if(isset($data['description']))
-                    <p class="m_4">{{ $data['description'] }}</p>
-                @else
-                    <p class="m_4">...</p>
-                @endif
+                <p class="m_4">   {{ $element->description }}</p>
                 <div class="col-12">
-                    <iframe id="kodik-player" src="{{ $elem['link'] }}" width="100%" height="370" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="kodik-player" src="{{ $element->link }}" width="100%" height="370" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             <div class="col-md-3">
