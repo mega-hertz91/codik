@@ -24,6 +24,7 @@ class CreateTableFilms extends Migration
             $table->text('poster_url');
             $table->text('countries');
             $table->text('actors');
+            $table->text('producers');
             $table->string('category');
             $table->string('duration');
             $table->string('quality');

@@ -22,8 +22,10 @@
                     </p>
                     <p class="movie_option"><strong>Год: </strong>{{ $element->year}}</p>
                     <p class="movie_option"><strong>Категория: </strong><a href="#">Adventure</a>, <a href="#">Fantazy</a></p>
-                    <p class="movie_option"><strong>Дата релиза: </strong>December 12, 2014</p>
+                    <p class="movie_option"><strong>Дата релиза: </strong>{{ $element->premiere_ru }}</p>
                     <p class="movie_option"><strong>Режиссер: </strong>
+                        {{ $element->producers }}
+                    </p>
 
                     <p class="movie_option"><strong>Актеры: </strong>
                         {{ $element->actors }}

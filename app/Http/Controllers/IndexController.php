@@ -20,7 +20,11 @@ class IndexController extends Controller
             'russian-movie' => 'Русские фильмы'
         ];
 
-        $new_film = Films::whereRaw("type='foreign-movie' and year='2019' and kinopoisk_rating > 5")->take(6)->get();
+        $new_film = Films::whereRaw("type='foreign-movie' and year='2019' and kinopoisk_rating > 5")
+            ->distinct()
+            ->take(8)
+            ->get()
+        ;
 
         return view('index', [
             'categories' => $categories,

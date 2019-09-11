@@ -48,6 +48,10 @@ class RussianCartoonSeeder extends Seeder
                     $value['material_data']['actors'] = [];
                 }
 
+                if (isset($value['material_data']['producers']) == false) {
+                    $value['material_data']['producers'] = [];
+                }
+
                 if (isset($value['material_data']['category']) == false) {
                     $value['material_data']['category'] = [];
                 }
@@ -74,6 +78,7 @@ class RussianCartoonSeeder extends Seeder
                     'poster_url' => $value['material_data']['poster_url'],
                     'countries' => implode(', ', $value['material_data']['countries']),
                     'actors' => implode(', ', $value['material_data']['actors']),
+                    'producers' => implode(',', $value['material_data']['producers']),
                     'category' => implode(', ', $value['material_data']['genres']),
                     'duration' => $value['material_data']['duration'],
                     'quality' => $value['quality'],
