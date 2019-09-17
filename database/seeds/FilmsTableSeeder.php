@@ -12,7 +12,7 @@ class FilmsTableSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        $data = file_get_contents('public/data/foreign-movie.json');
+        $data = file_get_contents('public/data/all.json');
         $data = json_decode($data, true);
         $order = -1;
 

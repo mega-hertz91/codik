@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +17,12 @@ Route::get('/', 'IndexController@renderContent');
 Route::get('/category/{id}', 'CategoryController@renderCategory');
 Route::get('/element/{id}', 'ElementController@renderElement');
 Route::get('/upload/films', 'Upload@uploadFilms');
-Route::get('/base', function () {
-    $data = \App\Films::all()->first();
+/*Route::get('/base', function () {
+    $data = DB::table('films')->distinct()->get();
+    $data = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
-    dd($data);
-});
+    file_put_contents('data/all.json', $data);
+    print('success');
+
+    // Export base in .json
+});*/
