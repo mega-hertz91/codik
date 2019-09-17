@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $order = -1;
 
         foreach ($data as $key => $value) {
+            print($order);
+
             DB::table('films')->insert([
                 'film_id' => $value['id'],
                 'type' => $value['type'],
