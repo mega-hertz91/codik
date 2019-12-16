@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Films;
+use App\Movies;
 
 class IndexController extends Controller
 {
@@ -20,7 +21,7 @@ class IndexController extends Controller
             'russian-movie' => 'Русские фильмы'
         ];
 
-        $new_film = Films::whereRaw("type='foreign-movie' and year='2019' and kinopoisk_rating > 5")
+        $new_film = Movies::whereRaw("type='foreign-movie' and year='2019' and kinopoisk_rating > 5")
             ->take(8)
             ->get()
         ;
